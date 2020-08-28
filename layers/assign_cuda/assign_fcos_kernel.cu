@@ -48,7 +48,7 @@ __global__ void assign_fcos_kernel(const long *label_cls, const float *label_box
 
 		if ((max_tlbr >= size_min) && (max_tlbr <= size_max) && (cls > 0) 
 			&& (top > 0) && (bottom > 0) && (left > 0) && (right > 0)
-			&& (oy < (float)stride) && (ox < (float)stride) && (bxa <= pred_area)) {
+			&& (fabs(oy) < (float)stride) && (fabs(ox) < (float)stride) && (bxa <= pred_area)) {
 			pred_cls  = cls;
 			pred_idx = (float)i;
 			pred_ymin = ymin;
