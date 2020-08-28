@@ -26,11 +26,11 @@ __global__ void assign_fcos_kernel(const long *label_cls, const float *label_box
     
 	for (int i=0; i<n; i++) {
 
-		float cls  = (float)label_cls[phw_i];
-		float ymin = label_box[phw_i*4+0];
-		float xmin = label_box[phw_i*4+1];
-		float ymax = label_box[phw_i*4+2];
-		float xmax = label_box[phw_i*4+3];
+		float cls  = (float)label_cls[phw_i*n+i];
+		float ymin = label_box[phw_i*n*4+i*4+0];
+		float xmin = label_box[phw_i*n*4+i*4+1];
+		float ymax = label_box[phw_i*n*4+i*4+2];
+		float xmax = label_box[phw_i*n*4+i*4+3];
 		float cy = (ymin + ymax) / 2.0;
 		float cx = (xmin + xmax) / 2.0;
 		float ch = ymax - ymin + 1;
