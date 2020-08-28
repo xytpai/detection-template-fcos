@@ -59,6 +59,7 @@ class FCOSHead(nn.Module):
         cls_s = cls_s.view(batch_size, -1, self.num_class)
         reg_s = reg_s.view(batch_size, -1, 4)
         ctr_s = ctr_s.view(batch_size, -1)
+        # transform reg
         stride_s = torch.FloatTensor([stride]).to(cls_s.device)
         center_yx = center_scatter(stride_s, batch_size, h_s, w_s, stride)[..., :2]
         reg_s_ymin_xmin =  center_yx + reg_s[..., 0:2]
