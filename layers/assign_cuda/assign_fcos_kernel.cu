@@ -95,7 +95,7 @@ at::Tensor assign_fcos_cuda(const at::Tensor &label_cls, const at::Tensor &label
 	target_idx:  L(ph*pw)
     -> F(ph*pw, 1 + 4 + 1 + 1)
 	*/
-	const int n = label_cls.size(0);
+	const int n = label_cls.size(1);
 	auto output = at::zeros({ph*pw, 7}, label_box.options());
 	if (output.numel() == 0) {
 		THCudaCheck(cudaGetLastError());
