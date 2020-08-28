@@ -25,7 +25,7 @@ def assign_fcos(label_cls, label_box, ph, pw, stride, size_min, size_max):
     label_cls = label_cls.view(1, n).expand(ph*pw, n)
     label_box = label_box.view(1, n, 4).expand(ph*pw, n, 4)
 
-    output = assign_cuda.assign_fcos(label_cls, label_box, ph, pw, size_min, size_max)
+    output = assign_cuda.assign_fcos(label_cls, label_box, ph, pw, stride, size_min, size_max)
     target_cls, target_reg, target_ctr, target_idx = output.split([1,4,1,1], dim=1)
     target_cls = target_cls.squeeze(1).long()
     target_ctr = target_ctr.squeeze(1)
