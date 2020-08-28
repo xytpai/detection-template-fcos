@@ -14,6 +14,8 @@ cd ../nms_cuda
 python3 setup.py install
 cd ../sigmoid_focal_loss_cuda
 python3 setup.py install
+cd ../assign_cuda
+python3 setup.py install
 
 cd ../../dataset/dbext
 python3 setup.py install

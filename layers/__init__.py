@@ -6,6 +6,7 @@ from .nms import box_nms
 from .frozen_batchnorm import FrozenBatchNorm2d
 from .anchor_gen import anchor_scatter
 from .anchor_gen import center_scatter
+from .assign import assign_fcos
 
 from .misc import make_conv3x3
 from .misc import make_fc
@@ -20,6 +21,8 @@ __all__ = [
     'FrozenBatchNorm2d',
     'anchor_scatter',
     'center_scatter',
+    'assign_fcos',
+    
     'make_conv3x3',
     'make_fc',
     'conv_with_kaiming_uniform',
