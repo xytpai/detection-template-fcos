@@ -44,6 +44,9 @@ class Detector(nn.Module):
             pred_reg.append(reg_s)
             pred_ctr.append(ctr_s)
             feature_size.append([h_s, w_s])
+        pred_cls = torch.cat(pred_cls, dim=1) # F(b, an, num_class)
+        pred_reg = torch.cat(pred_reg, dim=1) # F(b, an, 4) yxyx
+        pred_ctr = torch.cat(pred_ctr, dim=1) # F(b, an)
         if (label_cls is not None) and (label_reg is not None):
             return self._loss(locations, pred_cls, pred_reg, pred_ctr, feature_size, \
                                     im_h, im_w, label_cls, label_reg)
