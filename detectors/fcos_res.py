@@ -24,7 +24,7 @@ class Detector(nn.Module):
         # loss 
         self.sigmoid_focal_loss = SigmoidFocalLoss(2.0, 0.25)
         self.iou_loss = IOULoss()
-        self.bce_loss = nn.BCELoss()
+        self.bce_loss = nn.BCELoss(reduction='sum')
 
     def forward(self, imgs, locations, label_cls=None, label_reg=None):
         '''
